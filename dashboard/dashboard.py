@@ -33,6 +33,16 @@ nilai_awal = df['PM2.5'].iloc[0]
 nilai_akhir = df['PM2.5'].iloc[-1]
 persentase_perubahan = ((nilai_akhir - nilai_awal) / nilai_awal) * 100
 
+# Menampilkan aplikasi Streamlit
+st.title('Dashboard Analisis Kualitas Udara')
+
+# Menampilkan logo perusahaan di sidebar
+st.sidebar.image("shunyi.png", use_column_width=True)  # Ganti dengan URL gambar jika diperlukan
+
+# Menampilkan persentase perubahan PM2.5
+st.subheader('Persentase Perubahan PM2.5')
+st.write(f"Persentase perubahan nilai PM2.5 dari jam 0 hingga jam 23: {persentase_perubahan:.2f}%")
+
 # Membuat grafik untuk PM2.5 dan PM10
 plt.figure(figsize=(12, 6))
 plt.plot(df['hour'], df['PM2.5'], marker='o', color='b', label='PM2.5')
@@ -45,14 +55,7 @@ plt.grid()
 plt.legend()
 plt.tight_layout()
 
-# Menampilkan aplikasi Streamlit
-st.title('Dashboard Analisis Kualitas Udara')
-
-# Menampilkan logo perusahaan di sidebar
-st.sidebar.image("shunyi.png", use_column_width=True)  # Ganti dengan URL gambar jika diperlukan
-
-st.subheader('Persentase Perubahan PM2.5')
-st.write(f"Persentase perubahan nilai PM2.5 dari jam 0 hingga jam 23: {persentase_perubahan:.2f}%")
+# Menampilkan grafik PM2.5 dan PM10
 st.subheader('Grafik Perubahan Nilai PM2.5 dan PM10')
 st.pyplot(plt)
 
