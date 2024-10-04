@@ -43,6 +43,19 @@ st.sidebar.image("shunyi.png", use_column_width=True)  # Ganti dengan URL gambar
 st.subheader('Persentase Perubahan PM2.5')
 st.write(f"Persentase perubahan nilai PM2.5 dari jam 0 hingga jam 23: {persentase_perubahan:.2f}%")
 
+# Membuat grafik perubahan nilai PM2.5
+st.subheader('Grafik Perubahan PM2.5 Selama 24 Jam')
+plt.figure(figsize=(12, 6))
+plt.plot(df['hour'], df['PM2.5'], marker='o', color='b', label='PM2.5')
+plt.title('Perubahan Nilai PM2.5 Selama 24 Jam')
+plt.xlabel('Jam')
+plt.ylabel('Nilai PM2.5')
+plt.xticks(df['hour'])  # Menampilkan semua jam di sumbu x
+plt.grid()
+plt.legend()
+plt.tight_layout()
+st.pyplot(plt)
+
 # Membuat grafik untuk PM2.5 dan PM10
 plt.figure(figsize=(12, 6))
 plt.plot(df['hour'], df['PM2.5'], marker='o', color='b', label='PM2.5')
