@@ -1,9 +1,9 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # Import matplotlib disini
 import streamlit as st
 
 # Judul dashboard
-st.title("Dashboard Pengamatan Konsentrasi PM2.5 dan PM10")
+st.title("Dashboard Pengamatan Konsentrasi PM2.5 dan PM1")
 
 # Menampilkan logo di sidebar
 st.sidebar.image("shunyi.png", use_column_width=True)
