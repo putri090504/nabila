@@ -29,7 +29,7 @@ nilai_akhir = df2['PM2.5'].iloc[-1]
 persentase_perubahan = ((nilai_akhir - nilai_awal) / nilai_awal) * 100
 
 # Plot data kedua (perubahan PM2.5 dari jam 0 hingga 23)
-st.subheader("Perubahan Nilai PM2.5 Selama 24 Jam")
+st.subheader("Perubahan Nilai PM2.5 dari jam 0 hingga jam 23")
 fig2, ax2 = plt.subplots(figsize=(10, 6))
 ax2.plot(df2['hour'], df2['PM2.5'], marker='o', color='b', label='PM2.5')
 ax2.set_title('Perubahan Nilai PM2.5 Selama 24 Jam')
@@ -43,7 +43,7 @@ ax2.legend()
 st.pyplot(fig2)
 
 # Menampilkan hasil persentase perubahan
-st.write(f"Persentase perubahan nilai PM2.5 selama 24 jam: {persentase_perubahan:.2f}%")
+st.write(f"Persentase perubahan nilai PM2.5 dari jam 0 hingga jam 23: {persentase_perubahan:.2f}%")
 
 # Kesimpulan Pertanyaan 2
 st.subheader("Kesimpulan Pertanyaan 1")
