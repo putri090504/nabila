@@ -1,21 +1,28 @@
 import pandas as pd
-import matplotlib.pyplot as plt  # Import matplotlib disini
+import matplotlib.pyplot as plt
 import streamlit as st
+import os
 
 # Judul dashboard
-st.title("Dashboard Pengamatan Konsentrasi PM2.5 dan PM1")
+st.title("Dashboard Pengamatan Konsentrasi PM2.5 dan PM10")
 
-# Menampilkan logo di sidebar
-st.sidebar.image("shunyi.png", use_column_width=True)
+image_path = os.path.join(os.getcwd(), "shunyi.png")
+st.write(f"Current directory: {os.getcwd()}")
+st.write(f"Image path: {image_path}")
+
+if os.path.exists(image_path):
+    st.sidebar.image(image_path, use_column_width=True)
+else:
+    st.sidebar.write("Gambar tidak ditemukan.")
 
 # Data kedua (untuk perubahan PM2.5 dari jam 0 hingga 23)
 data2 = {
     'hour': list(range(24)),
     'PM2.5': [
-        93.994679, 91.150499, 87.262760, 83.141916, 79.469492, 
-        76.089656, 72.451231, 70.648785, 71.177790, 72.382608, 
-        74.306758, 74.660721, 74.424473, 73.397832, 72.589171, 
-        71.389551, 70.961471, 72.937423, 74.913556, 79.647937, 
+        93.994679, 91.150499, 87.262760, 83.141916, 79.469492,
+        76.089656, 72.451231, 70.648785, 71.177790, 72.382608,
+        74.306758, 74.660721, 74.424473, 73.397832, 72.589171,
+        71.389551, 70.961471, 72.937423, 74.913556, 79.647937,
         86.262444, 91.742778, 95.092609, 96.414948
     ]
 }
@@ -28,11 +35,11 @@ nilai_awal = df2['PM2.5'].iloc[0]
 nilai_akhir = df2['PM2.5'].iloc[-1]
 persentase_perubahan = ((nilai_akhir - nilai_awal) / nilai_awal) * 100
 
-# Plot data kedua (perubahan PM2.5 dari jam 0 hingga 23)
+# Plot data kedua (perubahan PM2.5 dari jam 0 hingga jam 23)
 st.subheader("Perubahan Nilai PM2.5 dari jam 0 hingga jam 23")
 fig2, ax2 = plt.subplots(figsize=(10, 6))
 ax2.plot(df2['hour'], df2['PM2.5'], marker='o', color='b', label='PM2.5')
-ax2.set_title('Perubahan Nilai PM2.5 Selama 24 Jam')
+ax2.set_title('Perubahan Nilai PM2.5 Dari Jam 0 Hingga Jam 23')
 ax2.set_xlabel('Jam')
 ax2.set_ylabel('Nilai PM2.5')
 ax2.set_xticks(df2['hour'])  # Menampilkan semua jam di sumbu x
@@ -103,10 +110,11 @@ st.pyplot(fig)
 
 # Kesimpulan Pertanyaan 1
 st.subheader("Kesimpulan Pertanyaan 2")
-st.write("""
+st.write(""" 
 Suhu dan Tekanan Udara tampaknya memiliki hubungan dengan konsentrasi polutan (PM2.5 dan PM10). 
 Pada suhu yang lebih rendah dan tekanan yang lebih tinggi, konsentrasi polutan cenderung meningkat. 
 Kecepatan angin tidak menunjukkan pengaruh yang jelas terhadap konsentrasi PM10 dalam data ini. 
 Faktor cuaca seperti suhu dan tekanan mungkin mempengaruhi pengendapan atau penyebaran partikel polutan di udara, 
 yang dapat menyebabkan peningkatan polusi udara pada kondisi cuaca tertentu.
 """)
+
