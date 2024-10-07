@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')  # Menetapkan backend
 import matplotlib.pyplot as plt
 import streamlit as st
 import os
@@ -6,10 +8,12 @@ import os
 # Judul dashboard
 st.title("Dashboard Pengamatan Konsentrasi PM2.5 dan PM10")
 
+# Mengambil path gambar
 image_path = os.path.join(os.getcwd(), "shunyi.png")
 st.write(f"Current directory: {os.getcwd()}")
 st.write(f"Image path: {image_path}")
 
+# Menampilkan gambar di sidebar
 if os.path.exists(image_path):
     st.sidebar.image(image_path, use_column_width=True)
 else:
@@ -117,4 +121,3 @@ Kecepatan angin tidak menunjukkan pengaruh yang jelas terhadap konsentrasi PM10 
 Faktor cuaca seperti suhu dan tekanan mungkin mempengaruhi pengendapan atau penyebaran partikel polutan di udara, 
 yang dapat menyebabkan peningkatan polusi udara pada kondisi cuaca tertentu.
 """)
-
